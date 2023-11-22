@@ -1,4 +1,4 @@
-// Type => 1. Min Heap, 2. Max Heap
+/* Heaps */
 
 // left child: i * 2
 // right child: i * 2 + 1
@@ -7,22 +7,18 @@
 let MinHeap = function () {
   let heap = [null];
 
-  this.print = function () {
-    return heap;
-  };
+  this.print = () => heap;
 
   this.insert = function (num) {
     heap.push(num);
     if (heap.length > 2) {
       let idx = heap.length - 1;
-
       while (heap[idx] < heap[Math.floor(idx / 2)]) {
         if (idx >= 1) {
           [heap[Math.floor(idx / 2)], heap[idx]] = [
             heap[idx],
             heap[Math.floor(idx / 2)],
           ];
-
           if (Math.floor(idx / 2) > 1) {
             idx = Math.floor(idx / 2);
           } else {
@@ -39,7 +35,6 @@ let MinHeap = function () {
     if (heap.length > 2) {
       heap[1] = heap[heap.length - 1];
       heap.splice(heap.length - 1);
-
       if (heap.length == 3) {
         if (heap[1] > heap[2]) {
           [heap[1], heap[2]] = [heap[2], heap[1]];
@@ -59,7 +54,6 @@ let MinHeap = function () {
           [heap[i], heap[right]] = [heap[right], heap[i]];
           i = 2 * i + 1;
         }
-
         left = 2 * i;
         right = 2 * i + 1;
 
@@ -86,6 +80,7 @@ let MinHeap = function () {
 
 let MaxHeap = function () {
   let heap = [null];
+
   this.print = () => heap;
 
   this.insert = function (num) {
@@ -132,7 +127,7 @@ let MaxHeap = function () {
           i = 2 * i;
         } else {
           [heap[i], heap[right]] = [heap[right], heap[i]];
-          i = 2 * i + 1;
+          i = 2 * i;
         }
         left = 2 * i;
         right = 2 * i + 1;
@@ -150,23 +145,17 @@ let MaxHeap = function () {
   };
 };
 
-const minHeap = new MinHeap();
+// const a = new MinHeap();
+const a = new MaxHeap();
 
-const maxHeap = new MaxHeap();
+a.insert(3);
+a.insert(4);
+a.insert(5);
+a.insert(10);
+a.insert(50);
+a.insert(40);
+a.insert(60);
 
-minHeap.insert(1);
+// a.sort();
 
-minHeap.insert(2);
-
-minHeap.insert(3);
-
-minHeap.insert(4);
-
-maxHeap.insert("vikas");
-
-maxHeap.insert("pawan");
-
-maxHeap.insert("raj");
-
-// console.log(minHeap.print());
-console.log(maxHeap.print());
+console.log(a.print());

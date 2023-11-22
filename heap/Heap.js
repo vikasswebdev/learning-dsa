@@ -7,6 +7,8 @@
 let MinHeap = function () {
   let heap = [null];
 
+  this.print = () => heap;
+
   this.insert = function (num) {
     heap.push(num);
     if (heap.length > 2) {
@@ -134,3 +136,17 @@ let MaxHeap = function () {
     return smallest;
   };
 };
+
+const a = new MinHeap();
+
+a.insert(3);
+a.insert(4);
+a.insert(5);
+a.insert(10);
+a.insert(50);
+a.insert(40);
+a.insert(60);
+
+// a.sort();
+
+console.log(a.print());
